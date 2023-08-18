@@ -13,3 +13,4 @@ RUN python prepare_win.py
 CMD python cron.py & gunicorn main:app --bind 0.0.0.0:80
 
 # CMD gunicorn main:app --bind 0.0.0.0:80
+EXPOSE 80
