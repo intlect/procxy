@@ -10,4 +10,6 @@ RUN python prepare_lin.py
 
 RUN python prepare_win.py
 
-CMD python cron.py & gunicorn main:app --bind 0.0.0.0:80
+# CMD python cron.py & gunicorn main:app --bind 0.0.0.0:80
+
+CMD gunicorn main:app --bind 0.0.0.0:80
