@@ -26,5 +26,5 @@ while True:
     if tags != init_tags:
         os.system("python prepare_lin.py")
         os.system("python prepare_win.py")
-    sleep(60*5)
+    sleep(60*60)
     init_tags = get_tags()
