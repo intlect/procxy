@@ -16,7 +16,7 @@ def get_tags():
         lolm = requests.get(lolm).json()["tag_name"]
         return [nanom, lolm, gmnr]
     except:
-        return ['v3.8.4', '1.76a', '3.41']
+        return ['v3.8.5', '1.76a', '3.41']
 
 init_tags = get_tags()
 
