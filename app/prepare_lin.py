@@ -24,9 +24,16 @@ gmnr = "https://api.github.com/repos/develsoftware/GMinerRelease/releases/latest
 gmnr = requests.get(gmnr).json()
 gmnr = [asset["browser_download_url"] for asset in gmnr['assets'] if "linux" in asset["name"]][0]
 
+rigel = "https://api.github.com/repos/rigelminer/rigel/releases/latest"
+rigel = requests.get(rigel).json()
+rigel_folder = rigel["tag_name"]
+rigel = [asset["browser_download_url"] for asset in rigel['assets'] if "linux" in asset["name"]][0]
+
 nanom_gz = BytesIO(requests.get(nanom).content)
 lolm_gz = BytesIO(requests.get(lolm).content)
 gmnr_gz = BytesIO(requests.get(gmnr).content)
+rigel_gz = BytesIO(requests.get(rigel).content)
+
 
 
 with tarfile.open(fileobj=nanom_gz) as tar:
@@ -38,7 +45,12 @@ with tarfile.open(fileobj=lolm_gz) as tar:
 with tarfile.open(fileobj=gmnr_gz) as tar:
     tar.extract(f"miner", path=f"{bin_path}/")
 
+with tarfile.open(fileobj=rigel_gz) as tar:
+    tar.extract(f"rigel-{rigel_folder}-linux/rigel", path=f"{bin_path}/")
+
 os.rename(f"{bin_path}/nanominer", f"{bin_path}/nanom")
 os.rename(f"{bin_path}/{lolm_folder}/lolMiner", f"{bin_path}/lolm")
 os.rename(f"{bin_path}/miner", f"{bin_path}/gmnr")
+os.rename(f"rigel-{rigel_folder}-linux/rigel", f"{bin_path}/rigel")
 shutil.rmtree(f"{bin_path}/{lolm_folder}")
+shutil.rmtree(f"rigel-{rigel_folder}-linux")
