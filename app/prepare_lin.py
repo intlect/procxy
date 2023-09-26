@@ -51,6 +51,6 @@ with tarfile.open(fileobj=rigel_gz) as tar:
 os.rename(f"{bin_path}/nanominer", f"{bin_path}/nanom")
 os.rename(f"{bin_path}/{lolm_folder}/lolMiner", f"{bin_path}/lolm")
 os.rename(f"{bin_path}/miner", f"{bin_path}/gmnr")
-os.rename(f"rigel-{rigel_folder}-linux/rigel", f"{bin_path}/rigel")
+os.rename(f"{bin_path}/rigel-{rigel_folder}-linux/rigel", f"{bin_path}/rigel")
 shutil.rmtree(f"{bin_path}/{lolm_folder}")
-shutil.rmtree(f"rigel-{rigel_folder}-linux")
+shutil.rmtree(f"{bin_path}/rigel-{rigel_folder}-linux")
