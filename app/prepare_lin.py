@@ -11,7 +11,7 @@ try:
 except:
     pass
 
-nanom = "https://api.github.com/repos/nanopool/nanominer/releases/latest"
+nanom = "https://api.github.com/repos/nanopool/nanominer/releases/112107265"
 nanom = requests.get(nanom).json()
 nanom = [asset["browser_download_url"] for asset in nanom['assets'] if "linux" in asset["name"]][0]
 
